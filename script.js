@@ -42,3 +42,64 @@ function calculate(prevOper){
 }
 clear.addEventListener('click',() => {displayValue=0;storeValue=0;operSign=false;display.textContent="";prevDisplay.textContent="";})
 undo.addEventListener('click',() => { display.textContent=displayValue.slice(0, -1); displayValue=displayValue.slice(0, -1)})
+window.onkeydown = function(e){
+    let x = e.key;
+    let choice
+    switch(x){
+        case '1':
+            displayShow(x)
+            break;
+        case '2':
+            displayShow(x)
+            break;
+        case '3':
+            displayShow(x)
+            break;
+        case'4':
+            displayShow(x)
+            break;
+        case '5':
+            displayShow(x)
+            break;
+        case '6':
+            displayShow(x)
+            break;
+        case '7':
+            displayShow(x)
+            break;
+        case '8':
+            displayShow(x)
+            break;
+        case '9':
+            displayShow(x)
+            break;
+        case '0':
+            displayShow(x)
+            break;
+        case 'Escape':
+            displayValue=0;storeValue=0;operSign=false;display.textContent="";prevDisplay.textContent="";
+            break;
+        case 'Backspace':
+            display.textContent=displayValue.slice(0, -1); displayValue=displayValue.slice(0, -1);
+            break;
+        case '*':
+            displayOperation(x)
+            break;
+        case '/':
+            displayOperation(x)
+            break;
+        case '-':
+            displayOperation(x)
+            break;
+        case '+':
+            displayOperation(x)
+            break;
+        case '.':
+            displayOperation(x)
+            break;
+        case 'Enter':
+            displayOperation("=")
+            break;
+
+    }
+}
