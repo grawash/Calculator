@@ -34,6 +34,7 @@ function calculate(prevOper){
     if (prevOper==="+") return (Math.floor(storeValue)+Math.floor(displayValue))
     else if (prevOper==="-") return (Math.floor(storeValue)-Math.floor(displayValue))
     else if (prevOper==="*") return (Math.floor(storeValue)*Math.floor(displayValue))
+    else if (Math.floor(storeValue)/Math.floor(displayValue) === Infinity) return "¯\_(ツ)_/¯";
     else return (Math.floor(storeValue)/Math.floor(displayValue))
 
 }
