@@ -4,6 +4,7 @@ let display = document.querySelector(".current");
 let prevDisplay =document.querySelector(".previous");
 const clear = document.querySelector(".clear");
 const undo = document.querySelector(".undo");
+const decimal = document.querySelector(".dot");
 let displayValue;
 let storeValue;
 let operSign;
@@ -33,15 +34,22 @@ function displayOperation(button){
 }
 //mathematical calculation
 function calculate(prevOper){
-    if (prevOper==="+") return (Math.floor(storeValue)+Math.floor(displayValue))
-    else if (prevOper==="-") return (Math.floor(storeValue)-Math.floor(displayValue))
-    else if (prevOper==="*") return (Math.floor(storeValue)*Math.floor(displayValue))
-    else if (Math.floor(storeValue)/Math.floor(displayValue) === Infinity) return "¯\_(ツ)_/¯";
-    else return (Math.floor(storeValue)/Math.floor(displayValue))
+    if (prevOper==="+") return (parseFloat(storeValue)+parseFloat(displayValue))
+    else if (prevOper==="-") return (parseFloat(storeValue)-parseFloat(displayValue))
+    else if (prevOper==="*") return (parseFloat(storeValue)*parseFloat(displayValue))
+    else if (parseFloat(storeValue)/parseFloat(displayValue) === Infinity) return "¯\_(ツ)_/¯";
+    else return (parseFloat(storeValue)/parseFloat(displayValue))
 
 }
 clear.addEventListener('click',() => {displayValue=0;storeValue=0;operSign=false;display.textContent="";prevDisplay.textContent="";})
 undo.addEventListener('click',() => { display.textContent=displayValue.slice(0, -1); displayValue=displayValue.slice(0, -1)})
+ decimal.addEventListener('click',addDot);
+
+function addDot(){ 
+     if (display.textContent.indexOf('.') !== -1){return} 
+     else if(display.textContent===""){display.textContent+="0."; displayValue+=".";}
+     else {display.textContent+=".";displayValue+=".";}
+ };
 window.onkeydown = function(e){
     let x = e.key;
     let choice
@@ -95,7 +103,7 @@ window.onkeydown = function(e){
             displayOperation(x)
             break;
         case '.':
-            displayOperation(x)
+            addDot();
             break;
         case 'Enter':
             displayOperation("=")
