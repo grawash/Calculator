@@ -2,6 +2,8 @@ const numButtons = document.querySelectorAll(".num");
 const operatorButtons = document.querySelectorAll(".special");
 let display = document.querySelector(".current");
 let prevDisplay =document.querySelector(".previous");
+const clear = document.querySelector(".clear");
+const undo = document.querySelector(".undo");
 let displayValue;
 let storeValue;
 let operSign;
@@ -38,3 +40,5 @@ function calculate(prevOper){
     else return (Math.floor(storeValue)/Math.floor(displayValue))
 
 }
+clear.addEventListener('click',() => {displayValue=0;storeValue=0;operSign=false;display.textContent="";prevDisplay.textContent="";})
+undo.addEventListener('click',() => { display.textContent=displayValue.slice(0, -1); displayValue=displayValue.slice(0, -1)})
